@@ -1,0 +1,14 @@
+{
+  "name": "puppet-ms_openstack_ci_metrics",
+  "version": "0.0.1",
+  "author": "Peter J. Pouliot",
+  "summary": "A puppet module to deploy our CI Statics bits",
+  "license": "Apache 2.0",
+  "source": "https://github.com/ppouliot/puppet-ms_openstack_ci_metrics",
+  "project_page": "https://github.com/ppouliot/puppet-ms_openstack_ci_metrics",
+  "issues_url": "https://github.com/ppouliot/puppet-ms_openstack_ci_metrics/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}
+
