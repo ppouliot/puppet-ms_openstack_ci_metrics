@@ -4,38 +4,38 @@
 #
 # === Parameters
 #
-# Document parameters here.
-#
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#   e.g. "Specify one or more upstream ntp servers as an array."
-#
-# === Variables
-#
-# Here you should define a list of variables that this module would require.
-#
-# [*sample_variable*]
-#   Explanation of how this variable affects the funtion of this class and if
-#   it has a default. e.g. "The parameter enc_ntp_servers must be set by the
-#   External Node Classifier as a comma separated list of hostnames." (Note,
-#   global variables should be avoided in favor of class parameters as
-#   of Puppet 2.6.)
-#
+# [*db_name*]
+#   name of the database
+# [*db_user*]
+#  database user to connect with
+# [*db_password*]
+#  password of the database user
+# [*db_host*]
+#  Host where the database resides
 # === Examples
 #
 #  class { 'ms_openstack_ci_metrics':
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
+#    db_name     => 'cimetrics_db',
+#    db_user     => 'cimetrics',
+#    db_password => 'cimetrics',
+#    db_host     => 'localhost',
 #  }
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Peter J. Pouliot <peter@pouliot.net>
 #
 # === Copyright
 #
-# Copyright 2016 Your name here, unless otherwise noted.
-#
-class ms_openstack_ci_metrics {
+# Copyright 2015 Peter J. Pouliot <peter@pouliot.net>, unless otherwise noted.
+
+class ms_openstack_ci_metrics (
+  $db_name     = $ms_openstack_ci_metrics::params::db_name,
+  $db_user     = $ms_openstack_ci_metrics::params::db_user,
+  $db_password = $ms_openstack_ci_metrics::params::db_password,
+  $db_host     = $ms_openstack_ci_metrics::params::db_host,
+
+) inherits ms_openstack_ci_metrics::params {
 
   package{['git','python2.7']:
     ensure => 'latest',
