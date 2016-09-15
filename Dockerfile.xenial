@@ -1,0 +1,10 @@
+FROM msopenstack/sentinel-ubuntu_xenial:latest
+RUN apt-get update -y
+RUN puppet module install puppetlabs-stdlib
+RUN puppet module install puppet-staging
+RUN puppet module install puppetlabs-vcsrepo
+RUN puppet module install jfryman-nginx
+RUN git clone https://github.com/ppouliot/puppetlabs-mysql /etc/puppet/modules/mysql
+RUN git clone https://github.com/ppouliot/puppet-ms_openstack_ci_metrics /etc/puppet/modules/ms_openstack_ci_metrics
+RUN puppet apply --debug --trace --verbose --modulepath=/etc/puppet/modules /etc/puppet/modules/ms_openstack_ci_metrics/tests/init.pp
+
