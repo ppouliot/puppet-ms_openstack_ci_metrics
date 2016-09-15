@@ -74,8 +74,8 @@ class ms_openstack_ci_metrics (
     perl_enable   => 'true',
   } ->
   file {'/CIMetricsTool/statsproj/openstack_stats/openstack_stats':
-    ensure => present,
-    source => template('ms_openstack_ci_metrics/settings.py.erb'),
+    ensure  => present,
+    content => template('ms_openstack_ci_metrics/settings.py.erb'),
   }
 
 }
